@@ -512,6 +512,7 @@ class BBDownGUI:
             [self.ffmpeg_path, "-i", file_path, "-q:a", "0", "-map", "a", output],
             stderr=subprocess.PIPE,
             text=True,
+            creationflags=subprocess.CREATE_NO_WINDOW if sys.platform.startswith("win") else 0,
         )
 
         assert process.stderr is not None
