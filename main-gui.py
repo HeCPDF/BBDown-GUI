@@ -218,8 +218,8 @@ class BBDownGUI:
 
     def _init_paths(self):
         self.bbdown_path = resource_path("utils/BBDown/BBDown.exe")
-        self.ffmpeg_path = resource_path("utils/ffmpeg-7.1-essentials_build/bin/ffmpeg.exe")
-        self.aria2c_path = resource_path("utils/aria2-1.37.0-win-64bit-build1/aria2c.exe")
+        self.ffmpeg_path = resource_path("utils/ffmpeg/bin/ffmpeg.exe")
+        self.aria2c_path = resource_path("utils/aria2/aria2c.exe")
 
     # --------------------------------------------------------
     # UI
@@ -512,6 +512,8 @@ class BBDownGUI:
             [self.ffmpeg_path, "-i", file_path, "-q:a", "0", "-map", "a", output],
             stderr=subprocess.PIPE,
             text=True,
+            bufsize=1,
+            encoding="utf-8",
             creationflags=subprocess.CREATE_NO_WINDOW if sys.platform.startswith("win") else 0,
         )
 
