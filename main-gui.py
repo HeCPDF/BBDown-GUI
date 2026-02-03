@@ -74,7 +74,7 @@ class BBDownGUI:
         scrollbar.pack(side=tk.LEFT, fill="y")
         listbox.config(yscrollcommand=scrollbar.set)
 
-        # 初始化内容（优先用已有顺序）
+        # content initialization
         current = [x.strip() for x in variable.get().split(",") if x.strip()]
         items = []
 
